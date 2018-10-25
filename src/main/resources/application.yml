@@ -1,0 +1,22 @@
+server:
+  port: 5050
+  servlet:
+    application-display-name: boot-es
+
+spring:
+  profiles:
+    active: dev
+    application:
+      name: ${server.servlet.application-display-name}
+#  data:
+#    elasticsearch:
+#      cluster-name: testescluster
+#      cluster-nodes: 172.17.11.96:9300
+#      local: false
+#      repositories:
+#        enabled: true
+
+elasticsearch:
+  host: 172.17.11.96
+  port: 9300
+  clustername: testescluster
