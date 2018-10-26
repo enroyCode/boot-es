@@ -53,8 +53,8 @@ public class UserService {
   public List<User> queryUsers(String keyword) {
     SearchQuery searchQuery = new NativeSearchQueryBuilder()
             .withQuery(matchAllQuery(keyword))
-            .withIndices("cat")
-            .withTypes("user")
+            .withIndices(User.INDEX)
+            .withTypes(User.TYPE)
             .withPageable(new PageRequest(0, 1))
             .build();
     Page<User> users = elasticsearchTemplate.queryForPage(searchQuery, User.class);

@@ -17,8 +17,10 @@ import org.springframework.data.elasticsearch.annotations.Document;
  * @author zhuchao
  */
 @Data
-@Document(indexName = "cat", type = "user")
+@Document(indexName = User.INDEX, type = User.TYPE)
 public class User {
+  public static final String INDEX = "cat";
+  public static final String TYPE = "user";
   @Id
   private String uuid;
   private String code;
