@@ -29,26 +29,26 @@ import java.net.InetAddress;
 @EnableElasticsearchRepositories(basePackages = "com.enroy.cloud.es.repository")
 public class EsConfig {
   @Value("${elasticsearch.host}")
-  private String EsHost;
+  private String esHost;
 
   @Value("${elasticsearch.port}")
-  private int EsPort;
+  private int esPort;
 
   @Value("${elasticsearch.clustername}")
-  private String EsClusterName;
+  private String esClusterName;
 
   @Bean
   public Client client() throws Exception {
 
     Settings esSettings = Settings.settingsBuilder()
-            .put("cluster.name", EsClusterName)
+            .put("cluster.name", esClusterName)
             .build();
 
     return TransportClient.builder()
             .settings(esSettings)
             .build()
             .addTransportAddress(
-                    new InetSocketTransportAddress(InetAddress.getByName(EsHost), EsPort));
+                    new InetSocketTransportAddress(InetAddress.getByName(esHost), esPort));
   }
 
   @Bean
