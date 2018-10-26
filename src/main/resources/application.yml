@@ -17,6 +17,14 @@ spring:
 #        enabled: true
 
 elasticsearch:
-  host: 172.17.11.96
+  host: 172.17.5.218
   port: 9300
   clustername: testescluster
+
+logging:
+  level:
+    root: INFO
+  file: /apache-tomcat/logs/boot-es.log
+  pattern:
+    file: '%d [%thread] [%X{trace_id:--}] %-5level %logger - %msg%n'
+    console: '%d [%thread] [%X{trace_id:--}] %-5level %logger - %msg%n'
