@@ -52,7 +52,7 @@ public class UserService {
   /** 使用elasticsearchTemplate定制查询 */
   public List<User> queryUsers(String keyword) {
     SearchQuery searchQuery = new NativeSearchQueryBuilder()
-            .withQuery(matchAllQuery(keyword))
+            .withQuery(build(keyword))
             .withIndices(User.INDEX)
             .withTypes(User.TYPE)
             .withPageable(new PageRequest(0, 1))
@@ -61,7 +61,7 @@ public class UserService {
     return users.getContent();
   }
 
-  private QueryBuilder matchAllQuery(String keyword) {
+  private QueryBuilder build(String keyword) {
     return QueryBuilders
             .boolQuery()
             .should(QueryBuilders.termQuery("name", keyword));
